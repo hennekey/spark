@@ -1,2 +1,3 @@
 env:
+  MAVEN_ARGS: -DskipTests=true
   SKIP_VERSION_OVERRIDE: 1
