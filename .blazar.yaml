@@ -1,3 +1,13 @@
 env:
   MAVEN_OPTS: -Phadoop-2.2 -Dhadoop.version=2.2.0 -Pyarn -Pnetlib-lgpl -Dscala-2.11 -DskipTests=true
   SKIP_VERSION_OVERRIDE: 1
+
+steps:
+  - description: "Compile source and pacakge"
+    commands:
+      - mvn $MAVEN_ARGS
+            clean
+            package
+  - description: "Create distribution"
+    commands:
+      - ./dev/make-distribution.sh --name hubspot-spark-2.0.0-scala-211 --tgz -Phadoop-2.2 -Dhadoop.version=2.2.0 -Pyarn -Pnetlib-lgpl -Dscala-2.11
